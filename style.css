@@ -1,0 +1,587 @@
+/* ===== Modern Student-Friendly Theme with Light/Dark Mode ===== */
+
+/* Dark Mode: Deep Blue Gradient */
+body.dark-mode {
+  background: linear-gradient(135deg, #1e3c72 0%, #2a5298 100%);
+  color: #f8f9fa;
+}
+
+/* Light Mode: Soft Academic Gradient */
+body.light-mode {
+  background: linear-gradient(135deg,#74b9ff 0%, #0984e3 100%);
+  color: #2d3436;
+}
+
+body {
+  font-family: "Poppins", sans-serif;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding-top: 60px;
+  overflow-x: hidden;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* 🧭 Modern Navbar */
+.navbar {
+  background: rgba(255, 255, 255, 0.15) !important;
+  backdrop-filter: blur(20px);
+  border-radius: 16px;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.18);
+  transition: all 0.3s ease;
+}
+
+body.light-mode .navbar {
+  background: rgba(255, 255, 255, 0.25) !important;
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.2);
+}
+
+/* ✨ Auth & Register Containers - Student Style */
+#authSection, #registerSection {
+  background: rgba(255, 255, 255, 0.12);
+  backdrop-filter: blur(20px);
+  padding: 2.5rem;
+  border-radius: 24px;
+  box-shadow: 0 12px 40px rgba(0, 0, 0, 0.15);
+  width: 90%;
+  max-width: 420px;
+  text-align: center;
+  animation: slideUp 0.6s ease-out;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  transition: all 0.3s ease;
+}
+
+body.light-mode #authSection, 
+body.light-mode #registerSection {
+  background: rgba(255, 255, 255, 0.25);
+  box-shadow: 0 12px 40px rgba(116, 185, 255, 0.25);
+  color: #2d3436;
+}
+
+/* 🗂️ Task Section */
+#taskSection {
+  width: 90%;
+  max-width: 1400px;
+  margin-top: 20px;
+  animation: fadeIn 0.8s ease;
+}
+
+/* 🎨 Modern Student Buttons */
+.btn-primary {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  color: #fff;
+  font-weight: 600;
+  padding: 12px 24px;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+
+.btn-success {
+  background: linear-gradient(135deg, #56ab2f 0%, #a8e6cf 100%);
+  border: none;
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  color: #2d3436;
+  font-weight: 600;
+}
+
+.btn-success:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(86, 171, 47, 0.3);
+}
+
+/* 🧱 Modern Task Cards */
+.card {
+  border-radius: 20px !important;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: rgba(255, 255, 255, 0.1);
+  color: #f8f9fa;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  margin-bottom: 20px;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(10px);
+}
+
+body.light-mode .card {
+  background: rgba(255, 255, 255, 0.9);
+  color: #2d3436;
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.card:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow: 0 16px 40px rgba(0, 0, 0, 0.2);
+}
+
+body.light-mode .card:hover {
+  box-shadow: 0 16px 40px rgba(116, 185, 255, 0.25);
+  transform: translateY(-8px) scale(1.02);
+}
+
+/* 🎯 Vibrant Priority Badges */
+.badge.bg-danger {
+  background: linear-gradient(135deg, #ff6b6b 0%, #ee5a52 100%) !important;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+.badge.bg-warning {
+  background: linear-gradient(135deg, #ffd93d 0%, #ff9a3d 100%) !important;
+  color: #2d3436 !important;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+.badge.bg-success {
+  background: linear-gradient(135deg, #6bcf7f 0%, #4ca1af 100%) !important;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-weight: 600;
+}
+
+/* 🎬 Modern Toast Notifications */
+.toast {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  border-radius: 16px;
+  padding: 16px 24px;
+  color: white;
+  font-weight: 600;
+  animation: slideInRight 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+}
+
+/* 🌟 Enhanced Animations */
+@keyframes fadeIn {
+  from { 
+    opacity: 0; 
+    transform: translateY(20px) scale(0.95); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0) scale(1); 
+  }
+}
+
+@keyframes slideUp {
+  from { 
+    opacity: 0; 
+    transform: translateY(40px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateY(0); 
+  }
+}
+
+@keyframes slideInRight {
+  from { 
+    opacity: 0; 
+    transform: translateX(100px); 
+  }
+  to { 
+    opacity: 1; 
+    transform: translateX(0); 
+  }
+}
+
+/* 📱 Responsive Design */
+@media (max-width: 768px) {
+  body {
+    padding-top: 40px;
+  }
+  #taskSection {
+    width: 95%;
+  }
+  .card:hover {
+    transform: translateY(-4px) scale(1.01);
+  }
+}
+
+/* 🎯 Kanban Columns - Modern Design */
+.kanban-column {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  min-height: 600px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .kanban-column {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.15);
+}
+
+.kanban-title {
+  text-align: center;
+  margin-bottom: 24px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+  font-size: 1.1rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.drop-zone {
+  min-height: 120px;
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 2px dashed transparent;
+}
+
+.drop-zone.drag-over {
+  background: rgba(255, 255, 255, 0.15);
+  border-color: rgba(102, 126, 234, 0.5);
+  transform: scale(1.02);
+}
+
+body.light-mode .drop-zone.drag-over {
+  background: rgba(116, 185, 255, 0.1);
+  border-color: rgba(116, 185, 255, 0.5);
+}
+
+/* 💬 Modern Comment System */
+.comment-section {
+  max-height: 200px;
+  overflow-y: auto;
+  margin-top: 15px;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.05);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .comment-section {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.comment {
+  padding: 12px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  border-left: 4px solid #667eea;
+}
+
+body.light-mode .comment {
+  background: rgba(255, 255, 255, 0.8);
+  border-left: 4px solid #74b9ff;
+}
+
+.comment:hover {
+  transform: translateX(5px);
+}
+
+.comment-author {
+  font-weight: 700;
+  font-size: 0.85rem;
+  color: #667eea;
+}
+
+body.light-mode .comment-author {
+  color: #0984e3;
+}
+
+.comment-text {
+  font-size: 0.9rem;
+  margin-top: 6px;
+  line-height: 1.4;
+}
+
+/* 📊 Activity Feed - Modern Design */
+.activity-feed {
+  max-height: 400px;
+  overflow-y: auto;
+  padding: 16px;
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 16px;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .activity-feed {
+  background: rgba(255, 255, 255, 0.3);
+}
+
+.activity-item {
+  padding: 12px;
+  margin-bottom: 12px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 12px;
+  color: #f8f9fa;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  border-left: 4px solid #56ab2f;
+}
+
+body.light-mode .activity-item {
+  background: rgba(255, 255, 255, 0.8);
+  color: #2d3436;
+  border-left: 4px solid #74b9ff;
+}
+
+.activity-item:hover {
+  transform: translateX(5px);
+}
+
+/* 🔍 Filter Section - Modern */
+.filter-section {
+  background: rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  padding: 20px;
+  margin-bottom: 24px;
+  backdrop-filter: blur(20px);
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+}
+
+body.light-mode .filter-section {
+  background: rgba(255, 255, 255, 0.4);
+  box-shadow: 0 8px 32px rgba(116, 185, 255, 0.15);
+}
+
+/* 👥 Assignee Badges */
+.assignee-badge {
+  display: inline-block;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  margin-top: 8px;
+  font-weight: 600;
+  box-shadow: 0 4px 12px rgba(102, 126, 234, 0.3);
+}
+
+/* 📎 File Attachment Styling */
+.file-attachment {
+  display: inline-block;
+  background: rgba(255, 255, 255, 0.1);
+  padding: 8px 16px;
+  border-radius: 12px;
+  margin-top: 8px;
+  font-size: 0.85rem;
+  transition: all 0.3s ease;
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+body.light-mode .file-attachment {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.file-attachment:hover {
+  background: rgba(255, 255, 255, 0.2);
+  transform: translateY(-2px);
+}
+
+/* 🌙 Theme Toggle Button */
+.theme-toggle {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  font-size: 1.3rem;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 15px rgba(102, 126, 234, 0.3);
+}
+
+.theme-toggle:hover {
+  transform: scale(1.1) rotate(15deg);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+/* 🎯 Form Controls Styling */
+.form-control, .form-select {
+  border-radius: 12px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.1);
+  color: inherit;
+  transition: all 0.3s ease;
+  padding: 12px 16px;
+}
+
+body.light-mode .form-control,
+body.light-mode .form-select {
+  background: rgba(255, 255, 255, 0.8);
+  border-color: rgba(116, 185, 255, 0.3);
+  color: #2d3436;
+}
+
+.form-control:focus, .form-select:focus {
+  border-color: #667eea;
+  box-shadow: 0 0 0 0.2rem rgba(102, 126, 234, 0.25);
+  background: rgba(255, 255, 255, 0.15);
+}
+
+body.light-mode .form-control:focus,
+body.light-mode .form-select:focus {
+  background: rgba(255, 255, 255, 0.95);
+  border-color: #74b9ff;
+}
+
+/* 📝 Text Styling */
+.text-light {
+  color: #f8f9fa !important;
+}
+
+body.light-mode .text-light {
+  color: #2d3436 !important;
+}
+
+.text-warning {
+  color: #ffd93d !important;
+}
+
+/* 🎨 Custom Scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: linear-gradient(135deg, #764ba2 0%, #667eea 100%);
+}
+/* ✨ Add these for extra polish */
+
+/* Loading Animation */
+.loading-spinner {
+  display: inline-block;
+  width: 20px;
+  height: 20px;
+  border: 3px solid rgba(255,255,255,.3);
+  border-radius: 50%;
+  border-top-color: #fff;
+  animation: spin 1s ease-in-out infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Pulse Animation for New Tasks */
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+.new-task {
+  animation: pulse 2s infinite;
+}
+
+/* Progress Bar for Tasks */
+.progress-bar {
+  height: 6px;
+  background: rgba(255,255,255,0.2);
+  border-radius: 3px;
+  overflow: hidden;
+  margin-top: 10px;
+}
+
+.progress-fill {
+  height: 100%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border-radius: 3px;
+  transition: width 0.3s ease;
+}
+
+/* Achievement Badges */
+.achievement-badge {
+  display: inline-flex;
+  align-items: center;
+  background: linear-gradient(135deg, #ffd93d 0%, #ff9a3d 100%);
+  color: #2d3436;
+  padding: 8px 16px;
+  border-radius: 25px;
+  font-weight: 600;
+  font-size: 0.8rem;
+  margin: 5px;
+  box-shadow: 0 4px 12px rgba(255, 157, 61, 0.3);
+}
+
+/* Task Statistics */
+.stats-card {
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 16px;
+  padding: 20px;
+  text-align: center;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+body.light-mode .stats-card {
+  background: rgba(255, 255, 255, 0.6);
+}
+
+.stats-number {
+  font-size: 2.5rem;
+  font-weight: 700;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* Floating Action Button */
+.fab {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  border: none;
+  color: white;
+  font-size: 1.5rem;
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  z-index: 1000;
+}
+
+.fab:hover {
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 12px 35px rgba(102, 126, 234, 0.6);
+}

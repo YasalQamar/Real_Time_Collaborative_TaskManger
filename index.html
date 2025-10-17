@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Real-Time Collaborative Task Manager</title>
+
+  <!-- ===== Website Icon (Favicon) ===== -->
+  <link rel="icon" type="image/png" href="project.png">
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <!-- Bootstrap Icons -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+  <!-- Custom CSS -->
+    <link rel="stylesheet" href="style.css">   
+</head>
+
+<body class="dark-mode">
+
+  <!-- LOGIN SECTION -->
+  <div id="authSection" class="container mt-5">
+    <img src="project.png" alt="Logo" width="35" height="35" class="me-2 rounded-circle">
+    <h3 class="text-center mb-4">User Login</h3>
+    <form id="loginForm">
+      <input type="text" id="username" class="form-control mb-2" placeholder="Username" required>
+      <input type="password" id="password" class="form-control mb-3" placeholder="Password" required>
+      <button type="submit" class="btn btn-primary w-100 mb-2">Login</button>
+    </form>
+    <p class="text-center text-light">Don't have an account? 
+      <a href="#" id="showRegister" class="text-warning">Register here</a>
+    </p>
+  </div>
+
+  <!-- REGISTER SECTION -->
+  <div id="registerSection" class="container mt-5" style="display:none;">
+    <h3 class="text-center mb-4">Register</h3>
+    <form id="registerForm">
+      <input type="text" id="regUsername" class="form-control mb-2" placeholder="Choose Username" required>
+      <input type="password" id="regPassword" class="form-control mb-3" placeholder="Choose Password" required>
+      <button type="submit" class="btn btn-success w-100 mb-2">Register</button>
+    </form>
+    <p class="text-center text-light">
+      Already have an account? <a href="#" id="showLogin" class="text-warning">Login here</a>
+    </p>
+  </div>
+
+  <!-- MAIN TASK SECTION -->
+  <div id="taskSection" class="container py-5" style="display:none;">
+    <nav class="navbar navbar-expand-lg navbar-dark shadow mb-4">
+      <div class="container-fluid">
+ <!-- ===== Brand with Logo ===== -->
+      <a class="navbar-brand fw-bold text-uppercase d-flex align-items-center" href="#">
+        <img src="project.png" alt="Logo" width="35" height="35" class="me-2 rounded-circle">
+        TaskManager-Pro
+      </a>
+      <div class="d-flex">
+          <button id="viewToggle" class="btn btn-light btn-sm me-2">Switch to List View</button>
+          
+          </button>
+          <button id="logoutBtn" class="btn btn-light btn-sm">Logout</button>
+          <button id="themeToggle" class="theme-toggle me-2" title="Toggle Light/Dark Mode">
+            <i class="bi bi-moon-stars-fill"></i>
+        </div>
+      </div>
+    </nav>
+
+    <h2 id="welcomeUser" class="text-center text-light mb-4"></h2>
+    <!-- Add this after the welcome message -->
+<div class="row mb-4">
+  <div class="col-md-3">
+    <div class="stats-card">
+      <div class="stats-number" id="totalTasks">0</div>
+      <div>Total Tasks</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="stats-card">
+      <div class="stats-number" id="completedTasks">0</div>
+      <div>Completed</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="stats-card">
+      <div class="stats-number" id="pendingTasks">0</div>
+      <div>Pending</div>
+    </div>
+  </div>
+  <div class="col-md-3">
+    <div class="stats-card">
+      <div class="stats-number" id="overdueTasks">0</div>
+      <div>Overdue</div>
+    </div>
+  </div>
+</div>
+    <!-- Filter Section -->
+    <div class="filter-section mb-4">
+      <div class="row">
+        <div class="col-md-3">
+          <input type="text" id="searchInput" class="form-control" placeholder="Search tasks...">
+        </div>
+        <div class="col-md-2">
+          <select class="form-select" id="priorityFilter">
+            <option value="">All Priorities</option>
+            <option value="High">High</option>
+            <option value="Medium">Medium</option>
+            <option value="Low">Low</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <select class="form-select" id="assigneeFilter">
+            <option value="">All Assignees</option>
+          </select>
+        </div>
+        <div class="col-md-2">
+          <input type="date" class="form-control" id="dueDateFilter">
+        </div>
+        <div class="col-md-3">
+          <button class="btn btn-primary w-100" data-bs-toggle="modal" data-bs-target="#taskModal">
+            ➕ Add Task
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Kanban Board View -->
+    <div id="kanbanView">
+      <div class="row">
+        <div class="col-md-4">
+          <div class="kanban-column">
+            <h4 class="kanban-title">To Do</h4>
+            <div class="drop-zone" id="todo-column" ondrop="drop(event, 'todo')" ondragover="allowDrop(event)">
+              <div id="todo-tasks"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="kanban-column">
+            <h4 class="kanban-title">In Progress</h4>
+            <div class="drop-zone" id="progress-column" ondrop="drop(event, 'progress')" ondragover="allowDrop(event)">
+              <div id="progress-tasks"></div>
+            </div>
+          </div>
+        </div>
+        <div class="col-md-4">
+          <div class="kanban-column">
+            <h4 class="kanban-title">Done</h4>
+            <div class="drop-zone" id="done-column" ondrop="drop(event, 'done')" ondragover="allowDrop(event)">
+              <div id="done-tasks"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- List View -->
+    <div id="listView" style="display:none;">
+      <div class="row">
+        <div class="col-md-8">
+          <div id="taskList" class="row g-4"></div>
+        </div>
+        <div class="col-md-4">
+          <div class="activity-feed">
+            <h5 class="text-center mb-3">Activity Feed</h5>
+            <div id="activityList"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TASK MODAL -->
+  <div class="modal fade" id="taskModal" tabindex="-1">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="taskModalTitle">Add New Task</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <form id="taskForm">
+            <input type="hidden" id="taskId">
+            <div class="row">
+              <div class="col-md-6">
+                <input type="text" class="form-control mb-2" id="taskTitle" placeholder="Task Title" required>
+                <textarea class="form-control mb-2" id="taskDesc" placeholder="Task Description" required></textarea>
+                <select class="form-select mb-2" id="taskPriority">
+                  <option value="Low">Low</option>
+                  <option value="Medium">Medium</option>
+                  <option value="High">High</option>
+                </select>
+              </div>
+              <div class="col-md-6">
+                <input type="date" class="form-control mb-2" id="taskDate" required>
+                <select class="form-select mb-2" id="taskAssignee">
+                  <option value="">Unassigned</option>
+                </select>
+                <div class="mb-2">
+                  <label class="form-label">Attach File (Simulated)</label>
+                  <input type="file" class="form-control" id="taskAttachment" disabled>
+                  <small class="text-muted">File attachment simulation only</small>
+                </div>
+                <input type="text" class="form-control mb-2" id="taskCategory" placeholder="Task Category">
+              </div>
+            </div>
+            <div class="mt-3">
+              <button type="submit" class="btn btn-primary w-100">Save Task</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- COMMENT MODAL -->
+  <div class="modal fade" id="commentModal" tabindex="-1">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Task Comments</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+        </div>
+        <div class="modal-body">
+          <div id="commentList" class="comment-section mb-3"></div>
+          <form id="commentForm">
+            <input type="hidden" id="commentTaskId">
+            <div class="input-group">
+              <input type="text" class="form-control" id="commentText" placeholder="Add a comment..." required>
+              <button class="btn btn-primary" type="submit">Post</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- TOAST -->
+  <div class="position-fixed bottom-0 end-0 p-3" style="z-index:11;">
+    <div id="liveToast" class="toast align-items-center text-bg-success border-0" role="alert">
+      <div class="d-flex">
+        <div class="toast-body" id="toastMsg">Action successful!</div>
+        <button type="button" class="btn-close btn-close-white me-2 m-auto" data-bs-dismiss="toast"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<script src="script.js"></script>   
+</body>
+</html>
